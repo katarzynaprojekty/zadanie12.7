@@ -1,0 +1,118 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic);
+@mixin border-radius($radius) {
+	border-radius: $radius;
+	-webkit-border-radius: $radius;
+	-moz-border-radius: $radius;
+}
+$green: #20bf6b;
+$red: #f44336;
+%for-delete-buttons {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: white; 
+    color: black; 
+    border: 1.5px solid $red;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    :hover {
+        background-color: $red;
+        color: white;
+    }
+}
+%for-add-buttons {
+    border: 2px solid $green;
+    box-shadow: 0 3px #999;
+    background-color: white; 
+    cursor: pointer;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: "Open Sans", sans-serif;
+    text-align: center;
+    background: #ccc url(https://images.unsplash.com/photo-1508948414348-13a52d2ec394?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=ec7edfa66df49eb1663e3f6e32a82992&auto=format&fit=crop&w=1350&q=80) 0/cover;  
+    .board {
+        width: 100%;
+        max-width: 1200px;
+        height: 100vh;
+        margin: 0 auto; 
+        h1 {
+            font-size: 4em;
+            margin: 0px;
+            padding: 15px;
+        }
+        .create-column {
+            @extend %for-add-buttons;
+            margin: 10px;
+            padding: 12px 24px;
+            @include border-radius(12px);
+        }
+        .column-container { 
+            margin-top: 20px;
+            width: 100%;
+            min-height: 700px;
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: row;
+            justify-content: space-around;
+            @include border-radius(10px);
+            .column {
+                background-color: rgba(255, 255, 255, 0.5);
+                margin: 5px;
+                min-width: 350px;
+                min-height: 300px;
+                border-radius: 8px;
+                box-shadow: 2px 4px 40px #444;
+                position: relative;
+                .column-title {
+                    margin-top: 0;
+                    @include border-radius(8px);
+                    color: aliceblue;
+                    background: $green;
+                    text-transform: uppercase;
+                }
+                .column-card-list {
+                    min-height: 200px;
+                }
+                .delete-column {
+                    @extend %for-delete-buttons;
+                    font-size: 17px;
+                    padding: 5px 10px;                
+                    @include border-radius(8px); 
+                } 
+                .add-card {
+                    @extend %for-add-buttons;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    padding: 6px 12px;
+                    @include border-radius(8px);
+                }
+                ul {
+                    padding: 5px; 
+                    li{
+                        cursor: all-scroll;
+                        padding: 0 5px; 
+                        margin: 5px 0;
+                        list-style-type: none;
+                        min-height: 25px;
+                        background-color: antiquewhite;
+                        text-align: justify;
+                        border: 1.5px solid $green;
+                        position: relative;
+                        .delete-card {
+                            @extend %for-delete-buttons; 
+                            @include border-radius(4px);
+                            padding: 2px 6px; 
+                        }
+                    }
+                }               
+            }
+        }       
+    }    
+}
