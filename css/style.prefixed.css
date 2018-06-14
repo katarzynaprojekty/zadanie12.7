@@ -1,8 +1,6 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic);
-body .board .column-container .column .delete-column, body .board .column-container .column ul li .delete-card {
+.btn-delete {
   position: absolute;
-  top: 0;
-  right: 0;
   background-color: white;
   color: black;
   border: 1.5px solid #f44336;
@@ -10,9 +8,10 @@ body .board .column-container .column .delete-column, body .board .column-contai
   cursor: pointer;
 }
 
-body .board .column-container .column .delete-column :hover, body .board .column-container .column ul li .delete-card :hover {
+.btn-delete:hover {
   background-color: #f44336;
   color: white;
+  border: 1.5px solid white;
 }
 
 body .board .create-column, body .board .column-container .column .add-card {
@@ -20,6 +19,12 @@ body .board .create-column, body .board .column-container .column .add-card {
   box-shadow: 0 3px #999;
   background-color: white;
   cursor: pointer;
+}
+
+body .board .create-column:hover, body .board .column-container .column .add-card:hover {
+  background-color: #20bf6b;
+  color: white;
+  border: 2px solid #1eb565;
 }
 
 * {
@@ -74,11 +79,13 @@ body .board .column-container {
 body .board .column-container .column {
   background-color: rgba(255, 255, 255, 0.5);
   margin: 5px;
-  min-width: 350px;
+  width: 350px;
   min-height: 300px;
   border-radius: 8px;
   box-shadow: 2px 4px 40px #444;
   position: relative;
+  padding-bottom: 40px;
+  word-break: break-all;
 }
 
 body .board .column-container .column .column-title {
@@ -89,6 +96,11 @@ body .board .column-container .column .column-title {
   color: aliceblue;
   background: #20bf6b;
   text-transform: uppercase;
+  padding: 0 6px;
+}
+
+body .board .column-container .column .column-title:hover {
+  background-color: #1eb565;
 }
 
 body .board .column-container .column .column-card-list {
@@ -101,11 +113,13 @@ body .board .column-container .column .delete-column {
   border-radius: 8px;
   -webkit-border-radius: 8px;
   -moz-border-radius: 8px;
+  bottom: 0;
+  right: 0;
 }
 
 body .board .column-container .column .add-card {
   position: absolute;
-  top: 0;
+  bottom: 0;
   left: 0;
   padding: 6px 12px;
   border-radius: 8px;
@@ -129,10 +143,16 @@ body .board .column-container .column ul li {
   position: relative;
 }
 
+body .board .column-container .column ul li:hover {
+  background-color: #e6d8c9;
+}
+
 body .board .column-container .column ul li .delete-card {
   border-radius: 4px;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   padding: 2px 6px;
+  right: 0;
+  bottom: 0;
 }
 /*# sourceMappingURL=style.prefixed.css.map */
